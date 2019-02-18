@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include moka_integration *.css
+recursive-include moka_integration *.csv
+recursive-include moka_integration *.html
+recursive-include moka_integration *.ico
+recursive-include moka_integration *.js
+recursive-include moka_integration *.json
+recursive-include moka_integration *.md
+recursive-include moka_integration *.png
+recursive-include moka_integration *.py
+recursive-include moka_integration *.svg
+recursive-include moka_integration *.txt
+recursive-exclude moka_integration *.pyc

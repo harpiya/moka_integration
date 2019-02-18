@@ -1,0 +1,67 @@
+{% extends "templates/web.html" %}
+
+{% block title %} Payment {% endblock %}
+
+{%- block header -%}{% endblock %}
+
+{% block script %}
+<script>{% include "templates/includes/card.js" %}</script>
+<script>{% include "templates/includes/moka_checkout.js" %}</script>
+{% endblock %}
+
+
+{%- block page_content -%}
+<div class= "row"> 
+<div class="col-xs-12">
+<div id="moka-form" class="mokaform" > 
+
+	<div class="tum">
+		<h3 class="odemeform-baslik">Ödeme Formu</h3>
+		<div class="hepsi">
+
+			<div class="demo-container">
+				<div class="info-window2 cvc" style="display:none">
+					<div class="arrow-info"></div>
+					<div class="cvc-info">
+						<img src="/assets/moka_integration/images/cvc-help.png">
+					</div>
+				</div>
+				<form    method="POST"   id="mokapostform" action="">
+				<div class="form-group active moka">
+					
+						<div class="mokaname mokafull">
+							<input class="c-card card-name" placeholder="Kart İsim Soyisim" type="text" required    oninvalid="this.setCustomValidity('Kart sahibinin adını yazınız.')"  oninput="setCustomValidity('')" name="card-name" id="card-name">
+						</div>
+
+						<div class="mokacard mokaorta">
+							<i class="mokacardicon"></i>
+							<input id="mokacardnumber" class="c-card cardnumber" placeholder="Kart Numarası" required   oninvalid="this.setCustomValidity('Kartın üzerindeki 16 haneli numarayı giriniz.')" oninput="setCustomValidity('')" type="tel" name="number" id="number">
+						</div>
+
+
+						<div class="mokaleft mokaexpry">
+							<input class="c-date c-card"  placeholder="AA/YY" type="tel" maxlength="7" required  oninvalid="this.setCustomValidity('Kartın son kullanma tarihini giriniz')" oninput="setCustomValidity('')" name="expiry" id="expiry" >
+						</div>
+
+						<div class="mokaright mokacvc">
+							<input class="card-cvc c-card" placeholder="CVC" required  type="number"  oninvalid="this.setCustomValidity('Kartın arkasındaki 3 ya da 4 basamaklı sayıyı giriniz')" oninput="setCustomValidity('')" name="cvc" id="cvc" >
+								<div class="moka-i-icon" style="display:none"><img src="/assets/moka_integration/images/icons/info.png" width="14px"> </div>
+						</div>
+				</div>
+				<button id="devamEt" type="submit" class="mokaode" style=""><span class="mokaOdemeTutar">{{ currency }} {{ amount }}</span><span class="mokaOdemeText"> ÖDE</span></button>
+				</form>
+			</div>
+			<div class="card-wrapper" style="margin-left:5px;"></div>
+		</div>  
+	</div>
+</div>
+
+{% endblock %}
+{% block style %}
+<style>
+	{% include "templates/includes/moka.css" %}
+	header, footer {
+		display: none;
+	}
+</style>
+{% endblock %}
