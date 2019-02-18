@@ -1,3 +1,15 @@
+# @Author: Saadettin Yasir AKEL <developer>
+# @Date:   2019-02-18T22:12:21+03:00
+# @Email:  yasir@harpiya.com
+# @Project: Harpiya Kurumsal Yönetim Sistemi
+# @Filename: moka_settings.py
+# @Last modified by:   developer
+# @Last modified time: 2019-02-18T22:20:45+03:00
+# @License: MIT License. See license.txt
+# @Copyright: Harpiya Yazılım Teknolojileri
+
+
+
 # -*- coding: utf-8 -*-
 # Copyright (c) 2019, vinhnguyen.t090@gmail.com and contributors
 # For license information, please see license.txt
@@ -10,7 +22,7 @@ from six.moves.urllib.parse import urlencode
 from frappe.model.document import Document
 from frappe.utils import get_url, call_hook_method, cint
 from frappe.integrations.utils import make_get_request, make_post_request, create_request_log, create_payment_gateway
-from urlparse import parse_qs
+from urllib.parse import parse_qs
 
 class MokaSettings(Document):
 	supported_currencies = ["TRY","USD", "EUR", "GBP"]
@@ -73,4 +85,4 @@ def confirm_payment(**kwargs):
 
 
 def update_integration_request_status(token, data, status, error=False):
-	frappe.get_doc("Integration Request", token).update_status(data, status)		
+	frappe.get_doc("Integration Request", token).update_status(data, status)
