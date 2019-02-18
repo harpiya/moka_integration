@@ -1,10 +1,10 @@
 # @Author: Saadettin Yasir AKEL <developer>
-# @Date:   2019-02-18T22:12:21+03:00
+# @Date:   2019-02-18T22:42:01+03:00
 # @Email:  yasir@harpiya.com
 # @Project: Harpiya Kurumsal Yönetim Sistemi
 # @Filename: moka_checkout.py
 # @Last modified by:   developer
-# @Last modified time: 2019-02-18T22:42:01+03:00
+# @Last modified time: 2019-02-18T22:57:15+03:00
 # @License: MIT License. See license.txt
 # @Copyright: Harpiya Yazılım Teknolojileri
 
@@ -106,7 +106,7 @@ def make_checkout(data):
 	SubMerchantName = ""
 	RedirectUrl = get_url( \
 			"/api/method/moka_integration.moka_integration.doctype.moka_settings.moka_settings.confirm_payment?token={0}".format(token))
-	checkkey = hashlib.sha256(dealercode.encode('utf-8')+"MK"+username.encode('utf-8')+"PD"+password.encode('utf-8')).hexdigest()
+	checkkey = hashlib.sha256(b"1991" +"MK"+ b"TestSemih" +"PD"+ b"UHD8Y28Y473EGY").hexdigest()
 	ClientIP = frappe.local.request_ip or '127.0.0.1'
 
 	veri={
