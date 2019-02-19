@@ -4,7 +4,7 @@
 # @Project: Harpiya Kurumsal Yönetim Sistemi
 # @Filename: moka_settings.py
 # @Last modified by:   developer
-# @Last modified time: 2019-02-18T22:20:45+03:00
+# @Last modified time: 2019-02-19T11:38:24+03:00
 # @License: MIT License. See license.txt
 # @Copyright: Harpiya Yazılım Teknolojileri
 
@@ -48,7 +48,7 @@ def confirm_payment(**kwargs):
 
 		query_string = frappe.local.request.query_string
 		query = parse_qs(query_string)
-		token = query['token'][0]
+		token = query['token']
 
 		integration_request = frappe.get_doc("Integration Request", token)
 		data = json.loads(integration_request.data)
