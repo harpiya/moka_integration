@@ -1,15 +1,3 @@
-# @Author: Saadettin Yasir AKEL <developer>
-# @Date:   2019-02-18T22:42:01+03:00
-# @Email:  yasir@harpiya.com
-# @Project: Harpiya Kurumsal Yönetim Sistemi
-# @Filename: moka_checkout.py
-# @Last modified by:   developer
-# @Last modified time: 2019-02-19T10:44:20+03:00
-# @License: MIT License. See license.txt
-# @Copyright: Harpiya Yazılım Teknolojileri
-
-
-
 # Copyright (c) 2015, Frappe Technologies Pvt. Ltd. and Contributors
 # License: GNU General Public License v3. See license.txt
 from __future__ import unicode_literals
@@ -26,7 +14,7 @@ no_sitemap = 1
 
 expected_keys = ('amount', 'title', 'description', 'reference_doctype', 'reference_docname',
 	'payer_name', 'payer_email', 'order_id', 'currency')
-
+ 
 def get_context(context):
 	context.no_cache = 1
 
@@ -58,7 +46,7 @@ def replaceSpace(veri):
 	veri =veri.replace("/s+/g", "")
 	veri = veri.strip()
 	return veri
-
+				
 @frappe.whitelist(allow_guest=True)
 def make_checkout(data):
 
@@ -70,25 +58,25 @@ def make_checkout(data):
 	dealercode = moka.moka_dealercode
 	username = moka.moka_username
 	password = moka.get_password(fieldname="moka_password", raise_exception=False)
-
+	
 	if moka.moka_sandbox == 1:
 		moka_url = "https://service.testmoka.com"
 	else:
 		moka_url = "https://service.moka.com"
-
+		
 
 	if moka.moka_tdmode == 1:
 		moka_url = moka_url + "/PaymentDealer/DoDirectPaymentThreeD"
 	else:
 		moka_url = moka_url + "/PaymentDealer/DoDirectPayment"
-
+	
 
 	#Convert Curreny ERPNext to MOKA
 	if data["currency"] == 'TRY':
 		currency = "TL"
 	else:
 		currency = data['currency']
-
+	
 	token = data['token']
 	name = data['name']
 	cvc = data['cvc']
